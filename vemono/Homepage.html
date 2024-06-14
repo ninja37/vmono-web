@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Homepage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #6e41df;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        header {
+            background-color: #ffffff;
+            color: white;
+            width: 100%;
+            padding: 0px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        header img {
+            max-width: 300px;
+            height: auto;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: rgb(255, 255, 255);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .button-container a {
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 16px;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+    
+        .button-1 { background-color: #9a0404; }
+        .button-2 { background-color: #eb0606; }
+        .button-3 { background-color: #5e17eb; }
+        .button-4 { background-color: #ffffff; }
+        
+
+        .button-container a:hover {
+            opacity: 0.9;
+        }
+
+        .offline-message {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            background-color: #ff9800;
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .share-button {
+            background-color: #3aeb17;
+            color: white;
+            border-radius: 8px;
+            padding: 15px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .share-button:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="assets/vmonologo11.png" alt="Your Logo">
+</header>
+
+<div class="container">
+    <h1>Welcome to Vmono App,</h1>
+    <p>👇Click here to get started👇</p>
+    <div class="button-container">
+        <a href="Multiplayer.html" class="button-1" target="_blank">🔴YT Multi-Player🔴</a>
+        <a href="YTCOM.html" class="button-2" target="_blank">🔥🔥YT Community Builder🔥🔥 </a>
+        <a href="INSTACOM.html" class="button-3" target="_blank">💗💗Instagram Community Builder💗💗 </a>
+
+        <a href="#" class="button-4"></a>
+        
+        
+        
+    </div>
+    <div class="share-button" onclick="share()">🔗 Share 🔗</div>
+</div>
+
+<div class="offline-message">
+    <h1>Offline Mode</h1>
+    <p>You are currently offline. Please check your internet connection.</p>
+</div>
+
+<script>
+    function updateOnlineStatus() {
+        const container = document.querySelector('.container');
+        const offlineMessage = document.querySelector('.offline-message');
+
+        if (navigator.onLine) {
+            container.style.display = 'block';
+            offlineMessage.style.display = 'none';
+        } else {
+            container.style.display = 'none';
+            offlineMessage.style.display = 'block';
+        }
+    }
+
+    window.addEventListener('online', updateOnlineStatus);
+    window.addEventListener('offline', updateOnlineStatus);
+
+    // Initial check
+    updateOnlineStatus();
+
+    function share() {
+        if (navigator.share) {
+            navigator.share({
+                title: document.title,
+                text: '🚀boost your channel Growth with Vmono app! Check out Now👇',
+                url: window.location.href
+            })
+            .then(() => console.log('Share successful'))
+            .catch((error) => console.error('Share failed', error));
+        } else {
+            alert('Web Share API is not supported in your browser.');
+        }
+    }
+</script>
+
+<!-- AdMob Ads -->
+<!-- Include AdMob ad code here -->
+
+</body>
+</html>
